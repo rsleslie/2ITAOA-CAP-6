@@ -1,7 +1,38 @@
-# criar a main que vai gerar loop que vai pedir para o usuario as informações da empresa/ você esta apto ou não apto
+AZUL = '\033[94m'
+VERDE = '\033[92m'
+AMARELO = '\033[93m'
+RESET = '\033[0m'
 
-# ranna main
-# chamar as funções em loop
+from core.empresas import cadastrarEmpresa
+from utils.validacoes import validar_dados
 
+def main():
+        
+    try:
+        while True:
+            print(f"\n{AZUL}📋 ─── MENU ───{RESET}")
+            print(f"{VERDE}1️⃣  Cadastrar nova empresa{RESET}")
+            print(f"{VERDE}2️⃣  Listar empresas{RESET}")
+            print(f"{VERDE}3️⃣  🚪 Sair{RESET}")
+
+            opcao = input(f"\n{AMARELO}👉 Escolha uma opção: {RESET}")
+
+            if opcao == "1":
+                validar_dados(cadastrarEmpresa())
+            elif opcao == "2":
+                # listar_empresas()
+                print("Ainda não Implementei **so uma ideia")
+            elif opcao == "3":
+                print("Saindo... Até logo!")
+                break
+            else:
+                print("Opção inválida.")
+
+    except KeyboardInterrupt:
+        print("\nEncerrando o programa. Até logo!")
+
+
+if __name__ == "__main__":
+    main()
 
 
