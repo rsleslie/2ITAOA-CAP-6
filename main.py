@@ -1,13 +1,9 @@
-AZUL = '\033[94m'
-VERDE = '\033[92m'
-AMARELO = '\033[93m'
-RESET = '\033[0m'
-
+from utils.cores import AZUL,VERDE,AMARELO,RESET
 from core.empresas import cadastrarEmpresa
 from utils.validacoes import validar_dados
 
 def main():
-        
+
     try:
         while True:
             print(f"\n{AZUL}📋 ─── MENU ───{RESET}")
@@ -16,7 +12,7 @@ def main():
             print(f"{VERDE}3️⃣  🚪 Sair{RESET}")
 
             opcao = input(f"\n{AMARELO}👉 Escolha uma opção: {RESET}")
-
+            print("\n")
             if opcao == "1":
                 validar_dados(cadastrarEmpresa())
             elif opcao == "2":
