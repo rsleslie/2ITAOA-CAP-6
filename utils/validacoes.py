@@ -21,3 +21,4 @@ def validar_produto(dicionário):
     # se for false
     # print na tela "Não atendemos esse produto"
     return false
+    #Escreve alguma coisa
