@@ -55,3 +55,23 @@ Facilitar o processo de logística reversa no agronegócio, permitindo que produ
 
 ---
 
+## 📁 Estrutura do Projeto
+
+
+
+├── main.py                 # Ponto de entrada do sistema (menu principal)
+├── core/
+│   ├── residuos.py         # Funções para cadastro e consulta de resíduos
+│   ├── empresas.py         # Funções para cadastro de empresas/parceiras
+│   ├── associacao.py       # Lógica de associação entre resíduos e empresas
+│   ├── relatorios.py       # Funções para gerar e salvar relatórios
+│   └── armazenamento.py    # Lógica para salvar/carregar JSON e .txt
+├── database/
+│   └── db.py               # Conexão e operações com SQLite
+├── data/
+│   ├── dados.json          # Arquivo JSON com dados salvos
+│   ├── relatorio.txt       # Relatório em texto gerado
+│   └── banco.db            # Banco de dados SQLite
+├── utils/
+│   └── validacoes.py       # Funções auxiliares (ex: validar datas, tipos)
+└── README.md               # Explicação do projeto
