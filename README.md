@@ -57,8 +57,7 @@ Facilitar o processo de logística reversa no agronegócio, permitindo que produ
 
 ## 📁 Estrutura do Projeto
 
-
-
+```bash
 ├── main.py                 # Ponto de entrada do sistema (menu principal)
 ├── core/
 │   ├── residuos.py         # Funções para cadastro e consulta de resíduos
