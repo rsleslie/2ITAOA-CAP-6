@@ -51,7 +51,7 @@ Facilitar o processo de logística reversa no agronegócio, permitindo que produ
 | Subalgoritmos          | Funções de cadastro, consulta, relatórios e associação  |
 | Estruturas de dados    | Listas, dicionários e tuplas                            |
 | Arquivos (JSON, TXT)   | Dados salvos em JSON e relatórios em TXT                |
-| Banco de dados (SQLite)| Registro completo e estruturado                         |
+| Banco de dados (Oracle)| Registro completo e estruturado                         |
 
 ---
 
@@ -66,11 +66,45 @@ Facilitar o processo de logística reversa no agronegócio, permitindo que produ
 │   ├── relatorios.py       # Funções para gerar e salvar relatórios
 │   └── armazenamento.py    # Lógica para salvar/carregar JSON e .txt
 ├── database/
-│   └── db.py               # Conexão e operações com SQLite
+│   └── db.py               # conexão com o banco Oracle
 ├── data/
 │   ├── dados.json          # Arquivo JSON com dados salvos
 │   ├── relatorio.txt       # Relatório em texto gerado
 │   └── banco.db            # Banco de dados SQLite
 ├── utils/
+│   ├── cores.py             # cores para impressão no terminal
 │   └── validacoes.py       # Funções auxiliares (ex: validar datas, tipos)
-└── README.md               # Explicação do projeto
+├── .env                     # variáveis de ambiente (NÃO versionar)
+├── .gitignore          
+├── requirements.txt
+└── README.md
+```
+---
+
+## ⚙️ Como rodar o projeto localmente
+
+Clone o repositório:
+```bash
+git clone https://github.com/rsleslie/2ITAOA-CAP-6.git
+cd 2ITAOA-CAP-6
+```
+Crie e ative o ambiente virtual (opcional):
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate     # Windows
+```
+Instale as dependências:
+```bash
+pip install -r requirements.txt
+```
+Crie um arquivo .env na raiz com as credenciais do banco Oracle:
+```bash
+DB_USER=RMxxxxxx
+DB_PASSWORD=suasenha
+DB_DSN=XXXX
+```
+Execute o sistema:
+```bash
+python main.py
+```

@@ -1,34 +1,36 @@
-from utils.cores import AZUL,VERDE,AMARELO,RESET
-from core.empresas import cadastrarEmpresa
-from utils.validacoes import validar_dados
+from core import residuos, empresas, associacao, relatorios
+from utils.cores import AMARELO, VERDE, AZUL, RESET
 
-def main():
-
+def menu_principal():
     try:
         while True:
-            print(f"\n{AZUL}📋 ─── MENU ───{RESET}")
-            print(f"{VERDE}1️⃣  Cadastrar nova empresa{RESET}")
-            print(f"{VERDE}2️⃣  Listar empresas{RESET}")
-            print(f"{VERDE}3️⃣  🚪 Sair{RESET}")
+            print(f"""
+                    {AZUL}=== SISTEMA DE GESTÃO DE RESÍDUOS ==={VERDE}
+                    1. Cadastrar resíduo
+                    2. Cadastrar Cliente
+                    3. Associar resíduo a empresa parceira
+                    4. Gerar relatório
+                    0. Sair
+                    """
+                )
+            opcao = input(f"{AMARELO}Escolha uma opção: {RESET}")
 
-            opcao = input(f"\n{AMARELO}👉 Escolha uma opção: {RESET}")
-            print("\n")
-            if opcao == "1":
-                validar_dados(cadastrarEmpresa())
-            elif opcao == "2":
-                # listar_empresas()
-                print("Ainda não Implementei **so uma ideia")
-            elif opcao == "3":
-                print("Saindo... Até logo!")
+            if opcao == '1':
+                residuos.cadastrar_residuo()
+            elif opcao == '2':
+                empresas.cadastrarEmpresa()
+            elif opcao == '3':
+                associacao.associacao_interativa()
+            elif opcao == '4':
+                relatorios.gerar_relatorio()
+            elif opcao == '0':
+                print(f"{VERDE}Saindo do sistema...{RESET}")
                 break
             else:
-                print("Opção inválida.")
+                print(f"{AMARELO}Opção inválida. Tente novamente.{RESET}")
 
     except KeyboardInterrupt:
         print("\nEncerrando o programa. Até logo!")
 
-
 if __name__ == "__main__":
-    main()
-
-
+    menu_principal()
