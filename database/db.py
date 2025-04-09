@@ -1,6 +1,4 @@
 import cx_Oracle
-
-import cx_Oracle
 from config.database_config import ORACLE_USERNAME, ORACLE_PASSWORD, ORACLE_DSN
 
 def conectar():

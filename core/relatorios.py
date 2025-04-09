@@ -1,64 +1,40 @@
-from database.db import conectar
-from utils.cores import AMARELO, VERDE
+import json
+from utils.cores import AMARELO, VERDE, AZUL, RESET
 
-def obter_materiais_disponiveis():
-    conn = conectar()
-    cursor = conn.cursor()
-    cursor.execute("SELECT DISTINCT tipo_material FROM empresas_parceiras")
-    materiais = [row[0] for row in cursor.fetchall()]
-    cursor.close()
-    conn.close()
-    return materiais
-
-def exibir_opcoes_materiais(materiais):
-    print(f"{VERDE}🔎 Tipos de materiais disponíveis:{AMARELO}")
-    for i, mat in enumerate(materiais, 1):
-        print(f"{i} - {mat}")
-    print()
-
-def escolher_material(materiais):
+def carregar_dados_residuos():
+    """Carrega os dados de resíduos do arquivo JSON."""
     try:
-        escolha = int(input("👉 Escolha um número: ")) - 1
-        return materiais[escolha]
-    except (ValueError, IndexError):
-        print("❌ Opção inválida.")
-        return None
+        with open('./data/dados.json', 'r') as arquivo:
+            dados = json.load(arquivo)
+            return dados.get('residuos', [])
+    except FileNotFoundError:
+        return []
+    except json.JSONDecodeError:
+        print(f"{AMARELO}⚠️ Erro ao decodificar o arquivo JSON de resíduos. Verifique a sua estrutura.{RESET}")
+        return []
 
-def solicitar_localizacao():
-    return input("📍 Digite a localização: ").strip()
+def gerar_relatorio_total_residuos():
+    """Gera um relatório com o total de resíduos por tipo."""
+    print(f"\n{AZUL}📊 ─── Relatório: Total de Resíduos por Tipo ───{RESET}")
+    residuos = carregar_dados_residuos()
+    total_por_tipo = {}
 
-def buscar_empresas_por_material(material):
-    conn = conectar()
-    cursor = conn.cursor()
-    sql = """
-        SELECT * FROM empresas_parceiras
-        WHERE tipo_material = :material
-    """
+    if not residuos:
+        print(f"{AMARELO}⚠️ Nenhum resíduo cadastrado ainda.{RESET}")
+        return
 
-    cursor.execute(sql, material=material)
-    resultados = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return resultados
+    for residuo in residuos:
+        tipo = residuo.get('tipo')
+        quantidade = residuo.get('quantidade', 0)
+        if tipo:
+            total_por_tipo[tipo] = total_por_tipo.get(tipo, 0) + quantidade
 
-def exibir_empresas(resultados):
-    if resultados:
-        print(f"\n{VERDE}✅ Empresas compatíveis encontradas:")
-        for empresa in resultados:
-            print(f"🏢 Empresa: {empresa[1]} | 📞 Contato: {empresa[4]}")
+    if total_por_tipo:
+        for tipo, total in total_por_tipo.items():
+            print(f"{VERDE}➡️ Tipo: {tipo} - Total: {total}{RESET}")
     else:
-        print("❌ Nenhuma empresa parceira disponível para essa coleta.")
+        print(f"{AMARELO}⚠️ Nenhum resíduo encontrado para gerar o relatório.{RESET}")
 
-def buscar_empresa_compativel_interativo():
-    materiais = obter_materiais_disponiveis()
-    if not materiais:
-        print("⚠️ Nenhum material encontrado no banco.")
-        return
 
-    exibir_opcoes_materiais(materiais)
-    tipo_material = escolher_material(materiais)
-    if not tipo_material:
-        return
-
-    resultados = buscar_empresas_por_material(tipo_material)
-    exibir_empresas(resultados)
+def gerar_relatorio():
+    gerar_relatorio_total_residuos()
