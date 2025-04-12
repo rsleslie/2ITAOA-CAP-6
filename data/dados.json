@@ -1,15 +1,5 @@
 {
-    
-    "empresas": [
-        {"nome_empresa": "ReciclaTech", "tipo_residuo_aceito": "embalagens"},
-        {"nome_empresa": "CompostaMais", "tipo_residuo_aceito": "restos de safra"},
-        {"nome_empresa": "Metalurgia União", "tipo_residuo_aceito": "máquina quebrada"},
-        {"nome_empresa": "EcoEmbalagens", "tipo_residuo_aceito": "embalagens"}
-    ],
-    "residuos": [
-        {"tipo": "embalagem", "quantidade": 10},
-        {"tipo": "restos de safra", "quantidade": 50},
-        {"tipo": "embalagem", "quantidade": 15},
-        {"tipo": "máquina quebrada", "quantidade": 1}
+    "clientes": [
+       
     ]
 }
