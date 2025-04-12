@@ -79,9 +79,9 @@ Otimizar o processo de logística reversa no agronegócio, fornecendo aos produt
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
-
-## ⚙️ Como rodar o projeto localmente
+**⚙️ Como rodar o projeto localmente**
 
 Clone o repositório:
 ```bash
@@ -127,7 +127,7 @@ DB_DSN=XXXX
    Execute os seguintes comandos SQL para inserir os dados iniciais dos tipos de resíduos:
 
    ```sql
-    INSERT INTO tipos_residuo (id_residuo, nome_residuo) VALUES (0, 'Papelão');
+INSERT INTO tipos_residuo (id_residuo, nome_residuo) VALUES (0, 'Papelão');
 INSERT INTO tipos_residuo (id_residuo, nome_residuo) VALUES (1, 'Plástico');
 INSERT INTO tipos_residuo (id_residuo, nome_residuo) VALUES (2, 'Papelão/Plástico');
 COMMIT;
@@ -155,7 +155,7 @@ COMMIT;
    Execute os seguintes comandos SQL para inserir dados de exemplo de empresas de reciclagem:
 
    ```sql
-    INSERT INTO empresas_parceiras (nome, id_residuo, localizacao, contato)
+INSERT INTO empresas_parceiras (nome, id_residuo, localizacao, contato)
 VALUES ('Aparas 2 Irmãos', 2, 'São Paulo - SP', '(11) 4091-3340');
 
 INSERT INTO empresas_parceiras (nome, id_residuo, localizacao, contato)
@@ -179,7 +179,7 @@ COMMIT;
    Você pode executar os seguintes comandos SQL para verificar se as tabelas foram criadas corretamente e se os dados foram inseridos:
 
    ```sql
-    SELECT * FROM tipos_residuo;
+SELECT * FROM tipos_residuo;
 SELECT * FROM empresas_parceiras;
 
 ```
