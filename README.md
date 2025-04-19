@@ -106,9 +106,9 @@ Para testar o sistema de logística reversa com a integração do Oracle, você 
 
    Utilize as credenciais configuradas no arquivo `.env` (DB_USER, DB_PASSWORD, DB_DSN) para estabelecer uma conexão com a sua instância do Oracle.
    ```bash
-DB_USER=RMxxxxxx
-DB_PASSWORD=suasenha
-DB_DSN=XXXX
+ORACLE_USERNAME=RMxxxxxx
+ORACLE_PASSWORD=suasenha
+ORACLE_DSN=XXXX
 ```
 
 **2. Crie a tabela `tipos_residuo` (se ainda não existir).**
