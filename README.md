@@ -190,3 +190,61 @@ SELECT * FROM empresas_parceiras;
 python main.py
 ```
 
+---
+
+# 🧩 Como Resolver o Erro DPI-1047 ao Usar `cx_Oracle`
+
+> **Erro:**
+>
+> ```
+> DPI-1047: Cannot locate a 64-bit Oracle Client library: "The specified module could not be found".
+> ```
+>
+> Esse erro ocorre quando o Python não consegue localizar a biblioteca cliente do Oracle necessária para se conectar ao banco de dados.
+
+---
+
+## ✅ Passo a Passo para Instalar o Oracle Instant Client Para Funcionamento no Windows
+
+### 1. Verifique a Arquitetura do Python
+
+- Execute o seguinte comando para confirmar se seu Python é 64 bits:
+
+```bash
+python -c "import platform; print(platform.architecture())"
+```
+
+⚠️ **Importante:** O Oracle Client, o Python e o cx_Oracle devem ser todos da **mesma arquitetura** (todos 64 bits ou todos 32 bits).
+
+### 2. Baixe o Oracle Instant Client
+- Acesse o site oficial:
+👉 [Download Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/downloads.html)
+
+- Escolha o seu sistema operacional (ex: Windows x64).
+
+- Baixe o pacote:
+
+- Instant Client Package – Basic
+
+### 3. Extraia e Configure o PATH
+1. Extraia o conteúdo do `.zip` em uma pasta, por exemplo:
+
+```makefile
+C:\oracle\instantclient_21_11
+```
+2. Adicione essa pasta ao `PATH` do sistema:
+
+- Abra o menu iniciar e pesquise por "Variáveis de Ambiente".
+
+- Clique em "Variáveis de Ambiente...".
+
+- Em "Variáveis do sistema", localize a variável Path, clique em Editar.
+
+- Adicione o caminho da pasta onde você extraiu o Instant Client, por exemplo:
+
+```makefile
+C:\oracle\instantclient_21_11
+```
+4. Reinicie o Terminal ou o Sistema
+Após alterar o `PATH`, feche e reabra o terminal ou IDE.
+Em alguns casos, reiniciar o sistema é necessário para aplicar a mudança.
